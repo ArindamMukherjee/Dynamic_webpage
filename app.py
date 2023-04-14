@@ -52,13 +52,17 @@ def hello_jovian():
 @app.route("/api/job/<id>")
 def show_job_json(id):
   job = load_jobs_from_db(id)
-  return jsonify(job)
+  return render_template("jopage.html",job=job)
 
 
 
 @app.route("/api/jobs")
 def list_jobs():
   return jsonify(JOBS)
+# @app.route("/jobs")
+# def job_page():
+#   job = load_jobs_from_db(id)
+#   return render_template("jopage.html",job=job)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
