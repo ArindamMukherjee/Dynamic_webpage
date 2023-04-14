@@ -52,6 +52,8 @@ def hello_jovian():
 @app.route("/api/job/<id>")
 def show_job_json(id):
   job = load_jobs_from_db(id)
+  if not job:
+    return "Not Found", 404
   return render_template("jopage.html",job=job)
 
 
