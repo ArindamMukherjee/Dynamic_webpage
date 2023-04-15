@@ -3,31 +3,34 @@
   <head>
     <title>{{job.title}}</title>
     </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <style>
-        #banner {
-          height: 360px;
-          width: 100%;
-          object-fit:cover;
-        }
-    </style>
-    {% include 'nav.html' %}
-    <img class="img-fluid" id="banner" src="{{url_for('static', filename='dosomething.jpeg') }}" alt="Image" >
+      {% include 'bootstrap.html' %}
+      {% include 'nav.html' %}
+      {% include 'banner.html' %}
   </head>
   <body>
     {% include 'nav.html' %}
-    <h3>Title</h3>
-    <p>{{job.title}}</p>
-    <h3>Location</h3>
-    <p>{{job.location}}</p>
-    <h3>Salary</h3>
-    <p>{{job.currency}}.{{job.salary}}</p>
-    <h3>Responsibilty</h3>
-    <p>{{job.responsibility}}</p>
-    <h3>Requirements</h3>
-    <p>{{job.requirements}}</p>
+    <div class="container">
+      <h1 class="text-center mt-2 mb-1">
+        Vibe Careers
+      </h1>
+      <h4>Title</h4>
+      <p>{{job.title}}</p>
+      <h4>Location</h4>
+      <p>{{job.location}}</p>
+      <ul>
+        {% for item in job.responsibility.split("\n") %}
+         <li> {{ item }}</li>
+        {% endfor %}
+      </ul>
+      <h4>Requirements</h4>
+      <ul>
+        {% for item in job.requirements.split("\n") %}
+         <li> {{ item }}</li>
+        {% endfor %}
+      </ul>
+      <h4>Salary</h4>
+      <p>{{job.currency}}.{{job.salary}}</p>
+      <h4>Responsibilty</h4>
     {% include 'footer.html' %}
   </body>
 </html>
