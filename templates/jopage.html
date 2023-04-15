@@ -17,6 +17,7 @@
       <p>{{job.title}}</p>
       <h4>Location</h4>
       <p>{{job.location}}</p>
+      <h4>Responsibilty</h4>
       <ul>
         {% for item in job.responsibility.split("\n") %}
          <li> {{ item }}</li>
@@ -30,7 +31,9 @@
       </ul>
       <h4>Salary</h4>
       <p>{{job.currency}}.{{job.salary}}</p>
-      <h4>Responsibilty</h4>
+      <div>
+        {% include 'application_from.html' %}
+      </div>
     {% include 'footer.html' %}
   </body>
 </html>
