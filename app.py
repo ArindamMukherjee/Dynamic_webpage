@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, request
 from database import engine
 from sqlalchemy import text
 from database import load_job_from_db
-from database import load_jobs_from_db
+from database import load_jobs_from_db, application_to_the_db
 
 app = Flask(__name__)
 
@@ -22,6 +22,7 @@ def show_job_json(id):
 def apply_to_job(id):
     data = request.form
     job = load_jobs_from_db(id)
+    # application_to_the_db(id, data)
     # print(data)
     #here we can store this data into the database 
     # on based on the data we can acknowledge the candidate
